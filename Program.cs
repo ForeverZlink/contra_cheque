@@ -9,6 +9,7 @@ namespace contra_cheque
         {
             Console.WriteLine("Hello World!");
             
+            Interface_of_prompt.Start();
             string enterprise_name = Console.ReadLine();
             int key_of_enterprise  =33;
             string cnpj ="1333,jjj-9";
@@ -25,7 +26,7 @@ namespace contra_cheque
 
             
             string birth        = "10/10/1999";
-            string name_of_employer         = "Carlos Henrique Cunha de Oliveira";
+            string name_of_employer  = "Carlos Henrique Cunha de Oliveira";
             int    registration = 202211;
 
             Employer empregado = new Employer(enterprise_1, 
@@ -104,6 +105,76 @@ namespace contra_cheque
             this.Office                   = name_of_office;
         }
 
+    }
+}
+class Interface_of_prompt{
+    public int[] options_of_menu = new int[5]{1,2,3,4,5};
+    public int choise;
+    public static void Start () {
+        Interface_of_prompt menu = new Interface_of_prompt();
+        
+        menu.show_line_decoration();
+        Console.WriteLine("Gerador de contra cheque");
+        menu.show_line_decoration();
+        menu.Show_menu();
+        menu.Choice_of_user();
+
+
+        
+
+    }
+    public void Show_menu(){
+        Console.WriteLine("Escolha uma das opções para prosseguir:\n1-Adicionar Empresa\n2-Adicionar Funcionário\n3-Adicionar Tributo\n4-Criar contra cheque\n5-Fechar Programar");
+        
+    }
+    public  int Choice_of_user(){
+        while (true){
+            try
+            {
+                this.choise = Int32.Parse(Console.ReadLine().Trim());
+                
+            }
+            catch (System.Exception)
+            {
+                
+                Console.Write("Escolha apenas uma opção válida!");
+                this.Show_menu();
+                continue;
+            }
+            if (this.its_a_number_in_are_menu()){
+                break;
+            }
+            else
+            {   
+                Console.WriteLine("Não é uma das opções");
+                this.Show_menu();
+                continue;
+            }
+
+            
+            
+        }
+        return this.choise;
+        
+    
+    }
+    public  bool its_a_number_in_are_menu(){
+        foreach (int option in this.options_of_menu)
+        {
+            if (option==this.choise){
+                return true;
+            }
+        }
+        return false;
+        
+       
+
+    }
+
+
+
+    public void show_line_decoration(){
+        Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 }
 
