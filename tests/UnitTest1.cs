@@ -1,0 +1,15 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace tests;
+
+[TestClass]
+public class UnitTest1
+{
+    [TestMethod]
+    public void TestMethod1()
+
+    {
+        int hello =2;
+        Assert.AreEqual(hello, 2);
+    }
+}
